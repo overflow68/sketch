@@ -1,24 +1,46 @@
 const canvas = document.getElementById("canvas");
 const btnHolder = document.getElementById("btnHolder");
+let squares ="";
+addSquares(64);
+
+const changeSize = document.createElement("button");
+changeSize.textContent = "Change size";
+btnHolder.appendChild(changeSize);
+
+changeSize.addEventListener("click",()=>{
+    newSize = prompt("Select new canvas size.");
+    if (newSize < 0 || newSize > 100 || newSize === ""){
+        alert("Max Size is 100 x 100, and you can't input a negative number. ");
+    }
+    else{
+    canvas.innerHTML = '';
+    
+    addSquares(newSize);
+    }});
+
+const eraseBtn = document.createElement("button");
+eraseBtn.textContent = "Erase";
+btnHolder.appendChild(eraseBtn);
+
+eraseBtn.addEventListener("click",erase);
 
 
-const size16x = document.createElement("button");
-size16x.setAttribute("id","16");
-size16x.setAttribute("class","pickSize");
-btnHolder.appendChild(size16x);
-size16x.textContent = "16 X 16";
+function erase(){
+    squares.forEach((square)=>{
+        square.classList.remove("blackSquare");
 
-const size32x = document.createElement("button");
-size32x.setAttribute("id","32");
-size32x.setAttribute("class","pickSize");
-btnHolder.appendChild(size32x);
-size32x.textContent = "32 X 32";
+    });
+};
 
-const size64x = document.createElement("button");
-size64x.setAttribute("id","64");
-size64x.setAttribute("class","pickSize");
-btnHolder.appendChild(size64x);
-size64x.textContent = "64 X 64";
+function draw(){
+    squares.forEach((square)=>{
+        square.addEventListener("mouseover",()=>{
+            if (square.className !="square blackSquare"){
+                square.className +=" blackSquare";
+            }
+            
+    })});
+};
 
 function addSquares(size){
 
@@ -35,17 +57,13 @@ canvas.style.gridTemplateRows = `repeat(${size},${squareSpace}px)`;
         canvas.appendChild(newDiv);
 
     }
+    squares = updateSquares();
+    draw();
 
-}
-addSquares(64);
-const squares = document.querySelectorAll(".square");
-squares.forEach((square)=>{
-    square.addEventListener("mouseover",()=>{
-        square.setAttribute("class","blackSquare");
+};
 
+function updateSquares(){
+    const squares = document.querySelectorAll(".square");
+    return squares;
+};
 
-
- 
-    })
-
-});

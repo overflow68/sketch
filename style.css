@@ -12,22 +12,20 @@ outline:1px solid;
 padding: 1rem;
 }
 
-.square{
-    outline:1px solid;
-}
+
 
 
 #btnHolder{
     width: 100%;
-    margin:  75px auto;
-    text-align: center;
+    margin:  70px auto;
+    justify-content: center;
+    display:flex
 }
 
-.pickSize{
-    display:inline-block;
+button{
     margin: 5px;
-    width: 125px;
-    height:75px;
+    width: 150px;
+    height:70px;
 }
 
 .blackSquare{
