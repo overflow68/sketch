@@ -44,7 +44,7 @@ function draw(){
 
 function addSquares(size){
 
-    let squareSpace = 1024/size; 
+    let squareSpace = 600/size; 
 canvas.style.gridTemplateColumns = `repeat(${size},${squareSpace}px)`;
 canvas.style.gridTemplateRows = `repeat(${size},${squareSpace}px)`;
     let canvasSize = size * size;
